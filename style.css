@@ -1008,21 +1008,14 @@ textarea {
 }
 
 .join-image img{
-
     width:100%;
     max-width:550px;
-
     height:500px;
-
     object-fit:cover;
-
     border-radius:28px;
-
     border:8px solid white;
-
     box-shadow:
         0 30px 60px rgba(0,0,0,.25);
-
 }
 
 .join-section .eyebrow {
