@@ -80,12 +80,44 @@ function initialiseImageFallbacks() {
     );
 
     images.forEach((image) => {
+        const container = image.parentElement;
+        const fallback = container.querySelector(".image-fallback");
+
         image.addEventListener("load", () => {
             image.style.display = "block";
+
+            if (fallback) {
+                fallback.style.display = "none";
+            }
         });
 
         image.addEventListener("error", () => {
             image.style.display = "none";
+
+            if (fallback) {
+                fallback.style.display = "flex";
+            }
+
+            console.error("Image could not be loaded:", image.src);
         });
+
+        /*
+            Handles images that finished loading before JavaScript started.
+        */
+        if (image.complete) {
+            if (image.naturalWidth > 0) {
+                image.style.display = "block";
+
+                if (fallback) {
+                    fallback.style.display = "none";
+                }
+            } else {
+                image.style.display = "none";
+
+                if (fallback) {
+                    fallback.style.display = "flex";
+                }
+            }
+        }
     });
 }
