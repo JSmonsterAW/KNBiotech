@@ -83,40 +83,30 @@ function initialiseImageFallbacks() {
         const container = image.parentElement;
         const fallback = container.querySelector(".image-fallback");
 
-        image.addEventListener("load", () => {
+        function showImage() {
             image.style.display = "block";
 
             if (fallback) {
                 fallback.style.display = "none";
             }
-        });
+        }
 
-        image.addEventListener("error", () => {
+        function showFallback() {
             image.style.display = "none";
 
             if (fallback) {
                 fallback.style.display = "flex";
             }
+        }
 
-            console.error("Image could not be loaded:", image.src);
-        });
+        image.addEventListener("load", showImage);
+        image.addEventListener("error", showFallback);
 
-        /*
-            Handles images that finished loading before JavaScript started.
-        */
         if (image.complete) {
             if (image.naturalWidth > 0) {
-                image.style.display = "block";
-
-                if (fallback) {
-                    fallback.style.display = "none";
-                }
+                showImage();
             } else {
-                image.style.display = "none";
-
-                if (fallback) {
-                    fallback.style.display = "flex";
-                }
+                showFallback();
             }
         }
     });
