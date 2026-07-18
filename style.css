@@ -984,24 +984,45 @@ textarea {
 ============================== */
 
 .join-section {
-    width: min(1200px, calc(100% - 40px));
-    margin: 20px auto 110px;
-    padding: 65px;
-
+    width: min(1300px, calc(100% - 40px));
+    margin: 100px auto;
+    padding: 70px;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
     align-items: center;
-
     background:
         linear-gradient(
             135deg,
             #075b43,
             #087f5b
         );
-
+    border-radius: 34px;
     color: white;
-    border-radius: var(--radius-large);
+}
+
+.join-image{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.join-image img{
+
+    width:100%;
+    max-width:550px;
+
+    height:500px;
+
+    object-fit:cover;
+
+    border-radius:28px;
+
+    border:8px solid white;
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.25);
+
 }
 
 .join-section .eyebrow {
